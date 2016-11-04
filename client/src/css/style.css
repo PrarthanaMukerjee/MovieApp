@@ -1,0 +1,13 @@
+.row{
+  align-content: center;
+}
+
+#searchmv{
+ padding: 8px;
+ border: solid 2px #66b3ff;
+ transition: border 0.2s;
+}
+
+#search{
+  align-content: : center;
+}
