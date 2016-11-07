@@ -1,4 +1,5 @@
 var React = require('react');
+var {Link} =require('react-router');
 var NavBar = React.createClass({
 
   render:function(){
@@ -9,10 +10,8 @@ var NavBar = React.createClass({
          <a className="navbar-brand" href="#">MovieApp</a>
         </div>
       <ul className="nav navbar-nav">
-        <li className="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li className="active"><Link to="/home">Home</Link></li>
+          <li><Link to="/ListFav">List Favourite Movies</Link></li>
       </ul>
     </div>
     </div>
@@ -20,4 +19,5 @@ var NavBar = React.createClass({
 }
 
 });
+
 module.exports = NavBar;

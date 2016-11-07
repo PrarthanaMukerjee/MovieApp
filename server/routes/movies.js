@@ -7,6 +7,7 @@ router.route("/add")//for one route path
   if(req.body)
   {
     var obj = {'imdbID':req.body.imdbID};
+    req.body["Comment"]="No Comment added yet !!!";
     console.log(req.body);
     var movieVar = new Movie(req.body);
     Movie.findOne(obj,function(err,data){
@@ -45,10 +46,9 @@ router.route("/add")//for one route path
 
 
 //Delete
-router.delete('/delete',function(req,res){
-  if(req.body)
-  {
-    Movie.remove({_id:req.body._id},function(err){
+router.delete('/delete/:imdbID',function(req,res){
+
+    Movie.remove({imdbID:req.params.imdbID},function(err){
       if(err)
       {
         console.log('error occured');
@@ -59,12 +59,11 @@ router.delete('/delete',function(req,res){
       }
 
     })
-  }
 })
 
-router.route("/update/:title")
+router.route("/update")
  .put(function(req, res) {
-       Movie.update({Title:req.params.title},{Year:req.body.Year},function(err){
+       Movie.update({imdbID:req.body.imdbID},{Comment:req.body.Comment},function(err){
          if(err){
             console.log('error occured');
          }
