@@ -14,8 +14,7 @@ var MovieDisplayBox = React.createClass({
             type:'POST',
             data:AddObject,
             success:function(data){
-              alert("Movie added successfully")
-              console.log(data);
+              alert(data);
             }.bind(this),
             error:function(err){
                 console.log(err);
