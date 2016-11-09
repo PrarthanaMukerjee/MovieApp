@@ -20,7 +20,7 @@ var Home = React.createClass({
 
        success : function(data){
          if(data.Response=="False"){
-           alert("No movie is present with this name..")
+           alert("No movie is present with this name...")
          }
          else{
            this.setState({Mdata:data.Search});
