@@ -26245,8 +26245,14 @@ var Home = React.createClass({displayName: "Home",
        datatype: 'JSON',
 
        success : function(data){
-         this.setState({Mdata:data.Search});
-         console.log(data);
+         if(data.Response=="False"){
+           alert("No movie is present with this name..")
+         }
+         else{
+           this.setState({Mdata:data.Search});
+           console.log(data);
+         }
+
        }.bind(this),
 
        error: function(err) {
@@ -26443,7 +26449,7 @@ var SearchComponent = React.createClass({displayName: "SearchComponent",
    render:function(){
      return (
 
-       React.createElement("div", {style: {backgroundColor:'#B2BABB '}, className: "jumbotron text-center"}, 
+       React.createElement("div", {style: {backgroundColor:'#F6C5BA '}, className: "jumbotron text-center"}, 
        React.createElement("h1", null, "Search Your Movie"), 
        React.createElement("p", null, "Enter movie name"), 
        React.createElement("input", {type: "text", size: "50", placeholder: "Search a movie...", onChange: this.changeHandler}), "     ", 

@@ -9,7 +9,7 @@ var SearchComponent = React.createClass({
    render:function(){
      return (
 
-       <div style={{backgroundColor:'#B2BABB '}} className="jumbotron text-center" >
+       <div style={{backgroundColor:'#F6C5BA '}} className="jumbotron text-center" >
        <h1>Search Your Movie</h1>
        <p>Enter movie name</p>
        < input type="text"   size="50"  placeholder="Search a movie..."  onChange={this.changeHandler} />  &nbsp; &nbsp;

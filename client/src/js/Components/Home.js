@@ -19,8 +19,14 @@ var Home = React.createClass({
        datatype: 'JSON',
 
        success : function(data){
-         this.setState({Mdata:data.Search});
-         console.log(data);
+         if(data.Response=="False"){
+           alert("No movie is present with this name..")
+         }
+         else{
+           this.setState({Mdata:data.Search});
+           console.log(data);
+         }
+
        }.bind(this),
 
        error: function(err) {
