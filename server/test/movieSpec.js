@@ -1,10 +1,33 @@
 var should = require("chai").should(),
-
+expect = require('chai').expect,
 supertest = require("supertest"),
 app = require("../bin/www");
+var sinon = require('sinon');
+var model = require('../models/movie.js');
+var modelStub = sinon.stub(model,'find');
 
 var url = supertest("http://localhost:8080");
 var data={}
+
+
+describe('Test my controller', function(){
+ describe('Find items', function(){
+   beforeEach(function(){
+     modelStub.yields(null, [{'itemid': 1, 'itemname': 'goods'}]);
+   });
+   it('should attempt to find items', function(done){
+     url
+       .get('/movies/add')
+       .expect(200)
+       .expect('Content-Type', /json/)
+       .end(function(err, res){
+         if (err) return done(err);
+         expect(res.body[0].itemname).to.be.equal("goods");
+         done();
+       });
+   });
+ });
+});
 
 describe("Testing the get route", function(err){
   it("should handle the request", function(done){
@@ -14,12 +37,13 @@ describe("Testing the get route", function(err){
         .expect('Content-Type', /json/)
         .end(function(err,res){
           if (err) {
-				        throw err;
+				        done(err);
 			    }
-         var myob= JSON.parse(res.text);
-         myob[0].Title.should.be.equal('2012 Doomsday');
-          done();
+         var myobj= JSON.parse(res.text);
+         myobj[0].Title.should.be.equal('2012 Doomsday');
+
         });
+        done();
   });
 });
 

@@ -13,7 +13,8 @@
     "jade": "~1.11.0",
     "mongoose": "^4.6.5",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sinon": "^1.17.6"
   },
   "devDependencies": {
     "chai": "^3.5.0",
