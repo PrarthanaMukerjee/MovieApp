@@ -26151,7 +26151,7 @@ var DisplayComponent = React.createClass({displayName: "DisplayComponent",
    });
 
 module.exports = DisplayComponent;
-},{"./MovieDisplayBox":239,"react":232}],236:[function(require,module,exports){
+},{"./MovieDisplayBox":240,"react":232}],236:[function(require,module,exports){
 var React = require('react');
 var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
 
@@ -26225,9 +26225,59 @@ var FavouriteDisplay= React.createClass({displayName: "FavouriteDisplay",
 module.exports = FavouriteDisplay;
 },{"react":232}],237:[function(require,module,exports){
 var React = require('react');
+var Footer = require('./Footer');
+
+var Footer = React.createClass({displayName: "Footer",
+
+  render : function(){
+ return(
+     React.createElement("footer", {style: {backgroundColor : '#191a1c '}, className: "footer navbar-fixed-bottom"}, 
+       React.createElement("div", {style: {color:'#ffffff '}, className: "container"}, 
+         React.createElement("div", {className: "row"}, 
+           React.createElement("div", {className: "col-sm-2"}, 
+             React.createElement("h6", null, "Copyright &copy 2016"), 
+             React.createElement("h6", null, "Movie Search Coorporation")
+           ), 
+           React.createElement("div", {className: "col-sm-4"}, 
+             React.createElement("h6", null, "About Us"), 
+             React.createElement("p", null, "Find Movie of your choice "), 
+             React.createElement("p", null, "in Cinematic History. COME.. SEARCH.. ENJOY..!!")
+             ), 
+             React.createElement("div", {className: "col-sm-2"}, 
+               React.createElement("h6", null, "Navigation"), 
+               React.createElement("ul", {className: "unstyled"}, 
+                 React.createElement("li", null, React.createElement("a", {href: ""}, "Home")), 
+                 React.createElement("li", null, React.createElement("a", {href: ""}, "Servive")), 
+                 React.createElement("li", null, React.createElement("a", {href: ""}, "Links")), 
+                 React.createElement("li", null, React.createElement("a", {href: ""}, "Contact Us"))
+               )
+             ), 
+             React.createElement("div", {className: "col-sm-2"}, 
+               React.createElement("h6", null, "Foolow Us"), 
+               React.createElement("ul", {className: "unstyled"}, 
+                 React.createElement("li", null, React.createElement("a", {href: "", className: "fa fa-facebook-official"})), 
+                 React.createElement("li", null, React.createElement("a", {href: "", className: "fa fa-twitter"})), 
+                 React.createElement("li", null, React.createElement("a", {href: "", className: "fa fa-instagram"})), 
+                 React.createElement("li", null, React.createElement("a", {href: "", className: "fa fa-youtube-play"}))
+               )
+             ), 
+             React.createElement("div", {className: "col-sm-2"}, 
+               React.createElement("h6", null, "Movie App")
+             )
+           )
+         )
+       )
+ );
+}
+});
+
+    module.exports = Footer;
+},{"./Footer":237,"react":232}],238:[function(require,module,exports){
+var React = require('react');
 
 var SearchComponent = require('./SearchComponent');
 var DisplayComponent = require('./DisplayComponent');
+var Footer = require('./Footer');
 
 var Home = React.createClass({displayName: "Home",
   getInitialState: function() {
@@ -26246,7 +26296,7 @@ var Home = React.createClass({displayName: "Home",
 
        success : function(data){
          if(data.Response=="False"){
-           alert("No movie is present with this name..")
+           alert("No movie is present with this name...")
          }
          else{
            this.setState({Mdata:data.Search});
@@ -26281,7 +26331,7 @@ var Home = React.createClass({displayName: "Home",
 })
 
 module.exports = Home;
-},{"./DisplayComponent":235,"./SearchComponent":241,"react":232}],238:[function(require,module,exports){
+},{"./DisplayComponent":235,"./Footer":237,"./SearchComponent":242,"react":232}],239:[function(require,module,exports){
 var React = require('react');
 var FavouriteDisplay = require('./FavouriteDisplay');
 
@@ -26362,7 +26412,7 @@ updateRender:function(obj){
    });
 
 module.exports = ListFav;
-},{"./FavouriteDisplay":236,"react":232}],239:[function(require,module,exports){
+},{"./FavouriteDisplay":236,"react":232}],240:[function(require,module,exports){
 var React = require('react');
 var MovieDisplayBox = React.createClass({displayName: "MovieDisplayBox",
 
@@ -26412,8 +26462,9 @@ var MovieDisplayBox = React.createClass({displayName: "MovieDisplayBox",
 }
 });
 
+
 module.exports = MovieDisplayBox;
-},{"react":232}],240:[function(require,module,exports){
+},{"react":232}],241:[function(require,module,exports){
 var React = require('react');
 var {Link} =require('react-router');
 var NavBar = React.createClass({displayName: "NavBar",
@@ -26437,7 +26488,7 @@ var NavBar = React.createClass({displayName: "NavBar",
 });
 
 module.exports = NavBar;
-},{"react":232,"react-router":81}],241:[function(require,module,exports){
+},{"react":232,"react-router":81}],242:[function(require,module,exports){
 var React = require('react');
 
 var SearchComponent = React.createClass({displayName: "SearchComponent",
@@ -26460,11 +26511,12 @@ var SearchComponent = React.createClass({displayName: "SearchComponent",
    }
 });
 module.exports = SearchComponent;
-},{"react":232}],242:[function(require,module,exports){
+},{"react":232}],243:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {hashHistory,Route,Router,IndexRoute} = require('react-router');
 var NavBar = require('./Components/Navbar');
+var Footer = require('./Components/Footer');
 var Home = require('./Components/Home');
 var ListFav = require('./Components/ListFavouriteMovies');
 
@@ -26475,7 +26527,9 @@ var Maincomponent = React.createClass({displayName: "Maincomponent",
     React.createElement("div", null, 
     React.createElement(NavBar, null), 
     React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), 
-    this.props.children
+    this.props.children, 
+    React.createElement("br", null), React.createElement("br", null), React.createElement("br", null), 
+    React.createElement(Footer, null)
     )
     )
   }
@@ -26490,4 +26544,4 @@ ReactDOM.render(
         )
   ),
  document.getElementById('app'));
-},{"./Components/Home":237,"./Components/ListFavouriteMovies":238,"./Components/Navbar":240,"react":232,"react-dom":51,"react-router":81}]},{},[242]);
+},{"./Components/Footer":237,"./Components/Home":238,"./Components/ListFavouriteMovies":239,"./Components/Navbar":241,"react":232,"react-dom":51,"react-router":81}]},{},[243]);

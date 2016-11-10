@@ -2,6 +2,7 @@ var React = require('react');
 
 var SearchComponent = require('./SearchComponent');
 var DisplayComponent = require('./DisplayComponent');
+var Footer = require('./Footer');
 
 var Home = React.createClass({
   getInitialState: function() {
